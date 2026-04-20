@@ -1,11 +1,11 @@
-public class myQueue implements LimitedSpaceDataStructure, Runnable {
+public class myQueue implements LimitedSpaceDataStructure {
 
     public Object[] storage = new Object[100];
     public int putIndex = 0;
     public int getIndex = 0;
     public int amountContained = 0;
 
-    public boolean put(Object obj) {
+    synchronized public boolean put(Object obj) {
         if (amountContained == 100) {
             return false;
         }
@@ -20,7 +20,7 @@ public class myQueue implements LimitedSpaceDataStructure, Runnable {
         return true;
     }
 
-    public Object get() {
+    synchronized public Object get() {
         if (amountContained == 0) {
             return "Empty";
         }
@@ -35,7 +35,7 @@ public class myQueue implements LimitedSpaceDataStructure, Runnable {
         return obj;
     }
 
-    public void run() {
+    synchronized public void run() {
         put(objects);
         get();
     }
