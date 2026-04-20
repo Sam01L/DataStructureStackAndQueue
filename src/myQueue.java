@@ -1,4 +1,4 @@
-public class myQueue implements LimitedSpaceDataStructure {
+public class myQueue implements LimitedSpaceDataStructure, Runnable {
 
     public Object[] storage = new Object[100];
     public int putIndex = 0;
@@ -31,7 +31,12 @@ public class myQueue implements LimitedSpaceDataStructure {
         } else {
             getIndex = 0;
         }
-        amountContained --;
+        amountContained--;
         return obj;
+    }
+
+    public void run() {
+        put(objects);
+        get();
     }
 }

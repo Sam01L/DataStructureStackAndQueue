@@ -6,14 +6,29 @@ public class Main {
 
        // Queue<myQueue>  = new Queue<>();
         myQueue queue = new myQueue();
+        final int total = 300;
         System.out.println("Test 1");
-        for (int i = 0; i <= 100; i++) {
-            System.out.println("PUT " + queue.put(i));
+
+        Thread put = new Thread();
+        for (int i = 0; i <= total; i++)
+        {
+            boolean add = queue.put(i);
+            System.out.println("PUT " + add);
+            //System.out.println("PUT " + queue.put(i));
         }
-        for (int i = 0; i < 100; i++){
-            System.out.println("GET " + queue.get());
+
+        Thread get = new Thread();
+        for (int i = 0; i < total; i++)
+        {
+            Object obj = queue.get();
+            System.out.println("GET " + obj);
         }
-       // System.out.println("Test 2");
+
+
+        put.start();
+        get.start();
+
+        // System.out.println("Test 2");
         //for (int i = 1; i <= 300; i++){
          //   boolean stored = queue.put(i);
          //   Object retrieved = queue.get();
