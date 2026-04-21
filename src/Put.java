@@ -6,13 +6,12 @@ public class Put implements Runnable {
     }
 
     public void run() {
-        for (int i = 0; i <= 100; i++) {
+        for (int i = 0; i <= 300; i++) {
             boolean add = sharedQueue.put(i);
             while (!add) {
                 add = sharedQueue.put(i);
             }
-                System.out.println("PUT " + i + ": " + add);
+            System.out.println("PUT " + i + ": " + add);
         }
     }
 }
-

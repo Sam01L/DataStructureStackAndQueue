@@ -1,5 +1,3 @@
-import java.util.Queue;
-
 public class Main {
     public static void main(String[] args) {
         myQueue queue = new myQueue();
@@ -19,19 +17,10 @@ public class Main {
         Thread get3Thread = new Thread(get3);
 
         putThread.start();
-        //put2Thread.start();
-        //put3Thread.start();
+        put2Thread.start();
+        put3Thread.start();
         getThread.start();
-        //get2Thread.start();
-        //get3Thread.start();
-        // System.out.println("Test 2");
-        //for (int i = 1; i <= 300; i++){
-         //   boolean stored = queue.put(i);
-         //   Object retrieved = queue.get();
-          //  System.out.println("Put " +  i + " Success " + stored + " Got: " + retrieved);
-        //}
+        get2Thread.start();
+        get3Thread.start();
     }
 }
-
-
-

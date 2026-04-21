@@ -1,5 +1,4 @@
 public class myQueue implements LimitedSpaceDataStructure {
-
     public Object[] storage = new Object[100];
     public int putIndex = 0;
     public int getIndex = 0;
@@ -10,13 +9,9 @@ public class myQueue implements LimitedSpaceDataStructure {
             return false;
         }
         storage[putIndex] = obj;
-        if (putIndex < 100) {
-            putIndex = putIndex + 1;
-        } else {
-            putIndex = 0;
-        }
-
-        amountContained = amountContained + 1;
+        putIndex = (putIndex + 1) % 100;
+        amountContained++;
+        notify();
         return true;
     }
 
@@ -26,17 +21,9 @@ public class myQueue implements LimitedSpaceDataStructure {
         }
         Object obj = storage[getIndex];
         storage[getIndex] = null;
-        if (getIndex < 100) {
-            getIndex = getIndex + 1;
-        } else {
-            getIndex = 0;
-        }
+        getIndex = (getIndex + 1) % 100;
         amountContained--;
+        notify();
         return obj;
-    }
-
-    synchronized public void run() {
-        put(objects);
-        get();
     }
 }

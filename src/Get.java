@@ -1,4 +1,4 @@
-public class Get implements Runnable{
+public class Get implements Runnable {
     myQueue sharedQueue;
 
     public Get(myQueue sharedQueue) {
@@ -6,13 +6,12 @@ public class Get implements Runnable{
     }
 
     public void run() {
-        for (int i = 200; i <= 300; i++)
-        {
+        for (int i = 200; i <= 300; i++) {
             Object value = sharedQueue.get();
-            while (value == null) {
-                add = (boolean) sharedQueue.get();
+            while (value.equals("Empty")) {
+                value = sharedQueue.get();
             }
-            System.out.println("GET  " + add);
+            System.out.println("GET " + value);
         }
     }
 }
